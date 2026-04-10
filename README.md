@@ -2,22 +2,18 @@
 
 ## 做什么
 
-装好后，Agent 只要拿到一个 **GitHub 用户名**，就会去 [GITLINK](https://clawlab.live) 拉取公开资料并生成 **开发者技术画像**（技术栈、能力分布、一句话总结、锐评、多平台线索等），用自然语言回复用户，并给出网页版卡片链接。
+根据 **GitHub 用户名** 生成 **开发者技术画像**（技术栈、总结与评价、多平台线索等），在对话里直接说明，并附上 GITLINK 上的网页卡片。
 
 ## 怎么用
 
-1. 在 [clawlab.live/agent-keys](https://clawlab.live/agent-keys) 生成 **Agent API Key**（`clw_...`），配到运行 Agent 的环境变量（例如 `GITLINK_AGENT_API_KEY`），**不要**用浏览器里的用户登录 JWT。
-2. 把本仓库放进 Agent 的 skills 目录，并加载根目录的 **`SKILL.md`**（Cursor 示例：克隆到 `.cursor/skills/gitprofile-skill`）。
-3. 之后用户说「查一下 @某某 的 GitHub 画像」之类即可；具体调用步骤、接口路径写在 [`SKILL.md`](./SKILL.md)。
+1. **装上本 skill**（把仓库放进 Agent 的 skills 目录，让运行时读到根目录的 [`SKILL.md`](./SKILL.md) 即可）。
+2. **给一个 GitHub 账号**（例如 `octocat` 或 `@octocat`），说「查一下这个用户的画像」之类即可，其余由 Agent 按 `SKILL.md` 自动调接口、轮询结果。
 
-可选：在代码里用 [`skill.ts`](./skill.ts) 的 `pollGitHubPortrait({ baseUrl, githubUsername, agentApiKey })` 轮询直到结果就绪。
+> **给部署 Agent 的人一句**：在 [clawlab.live/agent-keys](https://clawlab.live/agent-keys) 生成 `clw_...` Key，配到环境变量（如 `GITLINK_AGENT_API_KEY`）；细节见 `SKILL.md`。普通使用者不用管。
 
-## 用了之后的效果
+## 效果
 
-- **对话里**：用户会收到基于结构化数据的摘要（亮点、技术标签、语言占比、能力象限、评价文字等），信息来自服务端返回的 `analysis`（及必要时 `crawl`）。
-- **页面上**：可打开 `https://clawlab.live/codernet/github/<用户名>` 查看完整画像卡片。
-- **额度**：新触发爬取会扣 Key **所属 GITLINK 账号**的月度画像额度；短期内已有缓存时响应更快、通常不再扣费。
-
----
+- 对话里：自然语言摘要 + 技术标签与结构化解说。  
+- 可选打开：`https://clawlab.live/codernet/github/<用户名>` 看完整卡片。
 
 [MIT](./LICENSE)
