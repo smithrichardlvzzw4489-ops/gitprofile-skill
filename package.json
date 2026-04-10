@@ -1,0 +1,25 @@
+{
+  "name": "gitprofile-skill",
+  "version": "1.0.0",
+  "description": "Agent skill: GITLINK (clawlab.live) Open API — tech portrait for any GitHub user via Agent API Key (clw_)",
+  "main": "skill.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/smithrichardlvzzw4489-ops/gitprofile-skill.git"
+  },
+  "bugs": {
+    "url": "https://github.com/smithrichardlvzzw4489-ops/gitprofile-skill/issues"
+  },
+  "homepage": "https://github.com/smithrichardlvzzw4489-ops/gitprofile-skill#readme",
+  "author": "GITLINK / ClawLive",
+  "license": "MIT",
+  "keywords": [
+    "agent-skill",
+    "cursor-skill",
+    "gitlink",
+    "clawlab",
+    "codernet",
+    "github",
+    "developer-portrait"
+  ]
+}
